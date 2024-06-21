@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원 가입 폼</title>
+    <style>
+      #container {
+        width: 520px;
+        border: 1px solid black;
+        padding: 20px;
+        margin: 0 auto;
+      }
+      fieldset {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      legend {
+        font-weight: bold;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        line-height: 30px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="password"],
+      select,
+      textarea {
+        width: calc(100% - 12px);
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      input[type="submit"],
+      input[type="reset"] {
+        width: 100px;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+      }
+      input[type="reset"] {
+        background-color: #f44336;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <form>
+        <h1>회원 가입을 환영합니다</h1>
+        <fieldset>
+          <legend>사용자 정보</legend>
+          <label for="userid">아이디</label>
+          <input
+            type="text"
+            id="userid"
+            name="userid"
+            placeholder="4자 ~ 10자 사이, 공백없이"
+          />
+
+          <label for="email">이메일</label>
+          <input type="text" id="email" name="email" />
+
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="문자와 숫자, 특수 기호 포함"
+          />
+
+          <label for="confirm-password">비밀번호 확인</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+          />
+
+          <label for="join-path">가입 경로</label>
+          <select id="join-path" name="join-path">
+            <option value="blog">블로그</option>
+            <option value="sns">SNS</option>
+            <option value="ad">광고</option>
+          </select>
+
+          <label for="memo">메모</label>
+          <textarea
+            id="memo"
+            name="memo"
+            rows="4"
+            placeholder="남길 말씀이 있다면 여기에"
+          ></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>이벤트와 새로운 소식</legend>
+          <label>
+            <input type="radio" name="newsletter" value="yes" /> 메일 수신
+          </label>
+          <label>
+            <input type="radio" name="newsletter" value="no" checked /> 메일
+            수신 안 함
+          </label>
+        </fieldset>
+
+        <input type="submit" value="가입하기" />
+        <input type="reset" value="취소" />
+      </form>
+    </div>
+  </body>
+</html>
