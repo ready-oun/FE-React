@@ -416,8 +416,6 @@ console.log(movie);
  * 따라서, push, pop에 비해서, unshift 와 shift 는 성능이 낮음.
  */
 
-//5. slice : 기존 배열에서 특정 범위를 잘라 새로운 배열을 반환함.
-//          원본 배열을 유지함.
 console.log("--- slice : 자르기 ---");
 
 const arr3 = [1, 2, 3];
@@ -469,7 +467,7 @@ function cb(item, idx) {
 
 const arr4 = [1, 2, 3, 4, 5];
 
-arr.forEach(cb);
+arr4.forEach(cb);
 
 // 위의 콜백 메소드를 화살표 표현식으로 변경.
 console.log("--- foreach, 화살표 표현식 ---");
@@ -477,38 +475,39 @@ arr4.forEach((item, idx) => {
   console.log(`${idx}번째 요소 : ${item}`);
 });
 
+console.log("--- 8. 탐색 메소드 - indexOf ---");
 /**
- * 8. 탐색 메소드
+ * 8. 탐색 메소드 - indexOf
  *      배열에서 특정 조건을 만족하는 요소를 찾아내는 메소드
  *
  *      arr.indexOf(item, fromIndex);
  *
- *      - item : 배열에서 찾으려는 요소값.
+ *      - item : 배열에서 찾으려는 요소값. => 검색 조건
  *      - fromIndex : 탐색을 시작할 위치.
  */
 
 let arr5 = [1, 3, 5, 7, 1];
 
-// 검색되면, 검색 위치값을 반환하면서 탐색을 중지함
-console.log("arr5.indexOf(1, 0) = ", arr5.indexOf(1, 0)); // 1 : 검색조건, 0: 검색시작위치
+// 검색이 되면, 검색 위치값을 반환하면서, 탐색을 중지함.
+console.log(arr5.indexOf(1, 0)); // 1 : 검색 조건, 0 : 검색 시작 위치
 
 arr5 = [2, 3, 5, 7, 1];
-console.log("arr5.indexOf(1, 0) = ", arr5.indexOf(1, 0));
+console.log(arr5.indexOf(1, 0));
 
 arr5 = [1, 3, 5, 7, 1];
 
-console.log("arr5.indexOf(1, -1) = ", arr5.indexOf(1, -1)); // -1: 배열의 끝에서 탐색 시작
+console.log(arr5.indexOf(1, -1)); // -1 : 배열의 끝에서 탐색을 시작.
 
-// 탐색 결과가 없는 경우 => -1 반환
-console.log("arr5.indexOf(9)) = ", arr5.indexOf(9));
+// 탐색 결과가 없는 경우. => -1 을 반환.
+console.log(arr5.indexOf(9));
 
-// 탐색 조건과 배열 요소의 데이터 타입이 다른 경우 => -1을 반환
-// 비교 연산자(===)로 요소를 비교하므로, 자료형이 다르면 다른 값으로 평가
-console.log(" String 3 = ", arr5.indexOf("3"));
+// 탐색 조건과 배열의 요소의 데이터 타입이 다른 경우. => -1 을 반환.
+// 비교 연산자(===) 로 요소를 비교함으로, 자료형이 다르면, 다른 값으로 평가.
+console.log(arr5.indexOf("3"));
 
-// 배열에서 객체를 탐색하는 경우 => -1을 반환
-// indexOf 메소드로는 객체 자료형의 값을 탐색할 수 없음
-// => findIndex, find 메소드를 사용해ㅑㅇ 함
+// 배열에서 객체를 탐색하는 경우. => -1 을 반환.
+// indexOf 메소드로는 객체 자료형의 값을 탐색할 수 없음.
+// => findIndex, find 메소드를 사용해야 함.
 arr5 = [{ name: "홍길동" }, 1, 2, 3];
 console.log(arr5.indexOf({ name: "홍길동" }));
 
@@ -528,7 +527,8 @@ console.log("--- 10. 탐색 메소드 - findIndex - 콜백 함수 ---");
  *     - 인수로 콜백 함수를 전달해야 함. => 판별 함수.
  *       true : 판별 함수의 조건식 만족하는 경우.
  *       false : 판별 함수의 조건식을 만족하지 않는 경우.
- *     - 판별 함수를 만족하는 첫 번째 요소의 인덱스 번호를 반환하고, 없으면, -1을 반환.
+ *     - 판별 함수를 만족하는 첫 번째 요소의 인덱스 번호를 반환하고,
+ *       없으면, -1을 반환.
  *     - item : 현재 요소
  *     - index : 현재 인덱스
  *     - array : 탐색 대상 배열
@@ -591,9 +591,9 @@ arr5 = [
   { name: "김효빈", hobby: "노래" }, // idx : 3
 ];
 
-let filterArr = arr5.filter((item) => item.hobby === "당구");
+let finterArr = arr5.filter((item) => item.hobby === "당구");
 
-console.log(filterArr);
+console.log(finterArr);
 
 console.log("--- 13. 변형 메소드 - map -");
 /**
@@ -601,33 +601,6 @@ console.log("--- 13. 변형 메소드 - map -");
  *     배열을 변형하거나 요소를 재정렬.
  *
  *     - 콜백 메소드를 매개변수로 전달.
- *     - item, index, array 가 제공됨.
- */
-
-arr5 = [1, 2, 3, 4];
-let newArr = arr5.map((item) => item * 3);
-
-console.log(newArr);
-
-console.log("--- 13. 변형 메소드 - map - 객체 배열");
-
-arr5 = [
-  { name: "홍길동", hobby: "당구" }, // idx : 0
-  { name: "이종원", hobby: "영화" }, // idx : 1
-  { name: "신다민", hobby: "당구" }, // idx : 2
-  { name: "김효빈", hobby: "노래" }, // idx : 3
-];
-
-newArr = arr5.map((item) => item.name);
-
-console.log(newArr);
-
-console.log("--- 14. 변형 메소드 - 정렬 - sort -");
-/**
- * 14. 변형 메소드 - 정렬 - sort
- *     배열의 요소를 재정렬.
- *
- *     - 콜백 메소드를 매개변수로 전달. 비교함수.(오름차순, 내림차순)
  *     - item, index, array 가 제공됨.
  */
 
@@ -747,3 +720,156 @@ let result = arr5.reduce((acc, item) => acc + item, 0);
  */
 
 console.log(result);
+
+/**
+ * ================================================ Date 객체와 날짜 ==========================================================================
+ */
+
+// Date 객체 생성
+let date = new Date(); //생성자
+
+console.log(date);
+
+// 협정 세계시 : 1970.1.1.0:0:0 기준 => UTC + 0
+
+date = new Date(0); // UTC + 0 로 날짜 객체 생성
+console.log(date); // 한국 표준시 : 기준시간보다 9시간이 이르다.
+
+// 타임 스탬프를 사용한 Date 객체 생성
+// 타임 스탬프 : UTC+0 을 기준으로 지난 시간을 밀리초로 환산한 값.
+
+date = new Date(24 * 3600 * 1000);
+console.log(date);
+
+// 문자열로 Date 객체 생성
+let date1 = new Date("2000-10-20/00:00:00");
+let date2 = new Date("2000.10.20/00:00:00");
+let date3 = new Date("2000/10/20/00:00:00");
+let date4 = new Date("2000 10 20/00:00:00");
+
+console.log("date1 : " + date1);
+console.log("date2 : " + date2);
+console.log("date3 : " + date3);
+console.log("date4 : " + date4);
+
+// 숫자로 Date 객체 생성
+// 년, 월, 일, 시, 분, 초, 밀리초 순서로 매개변수를 설정.
+// 월의 범위 : 0(1월) ~ 11(12월)
+let date5 = new Date(2024, 6, 2, 0, 0, 0, 0);
+console.log("date5 : " + date5);
+
+// 숫자와 타임스탬프를 이용한 Date 객체 생성
+date5 = new Date(2024, 6, 2);
+let timestamp = date5.getTime();
+console.log("timestamp : " + timestamp);
+
+let dateClone = new Date(timestamp);
+console.log("dateClone : " + dateClone);
+
+// Date 객체에서 제공되는 메소드 : getter
+// 1. getFullYear : 네 자리수의 연도를 반환
+console.log("getFullYear :" + dateClone.getFullYear());
+
+// 2. getMonth : 월을 반환. 0 ~ 11 범위.
+console.log("getMonth :" + dateClone.getMonth());
+
+// 3. getDate : 일을 반환.
+console.log("getDate :" + dateClone.getDate());
+
+// 4. getDay : 요일을 반환. 0(일) ~ 6(토) 범위.
+console.log("getDay :" + dateClone.getDay());
+
+// 5. getHours, getMinutes, getSeconds, getMilliseconds
+
+// Date 객체에서 제공되는 메소드 : setter
+// 6. setFullYear : 연도 수정
+dateClone.setFullYear(2017);
+
+console.log(dateClone);
+
+// 7. setMonth : 월 수정
+dateClone.setMonth(4);
+console.log(dateClone);
+
+// 8. setHours, setMinutes, setSeconds
+
+// Date 객체에서 제공되는 메소드 : 출력( 문자열로 변환 ), toString()
+console.log(dateClone.toString()); // 날짜, 시간정보
+console.log(dateClone.toDateString()); // 날짜
+console.log(dateClone.toLocaleString()); // 년월일 순서의 날짜, 시간정보
+console.log(dateClone.toLocaleDateString()); // 년월일 순서의 날짜
+
+// Date 객체 응용하기 - 중요 - 기능을 구현해야 함.
+// 1. n 월 단위로 이동
+function moveMonth(date, monveMonth) {
+  // 매개변수 date 객체의 월 정보 취득
+  const curTimestamp = date.getTime();
+  const curMonth = date.getMonth();
+
+  const resultDate = new Date(curTimestamp);
+
+  // 취득한 월 정보에 monveMonth 를 더함.
+  // 더한 월을 setter를 이용해서 설정.
+  resultDate.setMonth(curMonth + monveMonth);
+
+  return resultDate;
+}
+
+const dateA = new Date("2000-10-10"); //현재날짜
+console.log(dateA); // Oct : 10월
+
+const dateB = moveMonth(dateA, 1);
+console.log(dateB); // Nov : 11월
+
+const dateC = moveMonth(dateA, -1);
+console.log(dateC); // Sep : 9월
+
+// 더 중요.
+// 2. 날짜가 프로퍼티로 있는 객체 배열에서,
+//    날짜로 해당 객체를 조회 => 검색 결과가 배열로 반환
+// 배열에 제공되는 메소드 => 탐색 메소드 => filter() 메소드를 활용.
+// filter() 메소드의 매개변수로 callback 메소드를 전달. => 검색 조건 구현.
+
+// 첫 번째 매개변수 : 검색날짜조건
+// 두 번째 매개변수 : date 정보가 프로퍼티로 있는 객체 배열
+function filterThisMonth(searchConditionDate, dateArray) {
+  // 매개변수에서 년, 월 정보 취득
+  const year = searchConditionDate.getFullYear();
+  const mont = searchConditionDate.getMonth();
+
+  // 시작일 종료일 날짜 생성 : 검색 범위
+  const srartDate = new Date(year, month, 1, 0, 0, 0, 0);
+  const endDate = new Date(year, month + 1, 0, 23, 59, 59);
+
+  // 두 번째 매개변수의 filter 메소드를 사용.
+  // 검색 범위의 값은 timestamp로 사용.
+  const resultArray = dateArray.filter(
+    (item) =>
+      srartDate.getTime <= item.getTime() && item.getTime <= endDate.getTime()
+  );
+
+  // 검색 결과 배열 반환
+  return resultArray;
+}
+
+// 2000. oct. 01. 00:00:00
+const srartDate = new Date(2000, 9, 1, 0, 0, 0, 0);
+console.log("srartDate : " + srartDate);
+
+// 2000. oct. 31. 23:59:59
+const endDate = new Date(2000, 9 + 1, 0, 23, 59, 59);
+console.log("endDate : " + endDate);
+
+const dateArray = [
+  new Date("2000-10-1"), // 검색 결과 대상
+  new Date("2000-10-31"), // 검색 결과 대상
+  new Date("2000-11-1"),
+  new Date("2000-9-30"),
+  new Date("1900-10-11"),
+];
+
+const today = new Date("2000-10-10/00:00:00");
+
+const filteredArray = filterThisMonth(today, dateArray);
+
+console.log("filteredArray : " + filteredArray);
