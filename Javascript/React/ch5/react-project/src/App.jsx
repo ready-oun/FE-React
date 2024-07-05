@@ -31,9 +31,9 @@ function App() {
 
 // p.208
 
-function ChildComp() {
-  return <div>child component</div>;
-}
+// function ChildComp() {
+//   return <div>child component</div>;
+// }
 
 function App() {
   // const name = "이정환";
@@ -72,14 +72,21 @@ function App() {
   //   </div>
   // );
 
+  // return (
+  //   <div className="App">
+  //     <Header />
+  //     <Body>
+  //       <ChildComp />
+  //     </Body>
+  //     <Footer />
+  //   </div>
+  // );
+
   return (
-    <div className="App">
-      <Header />
-      <Body>
-        <ChildComp />
-      </Body>
-      <Footer />
-    </div>
+    <>
+      <Button text={"카페"} />
+      <Button text={"블로그"} />
+    </>
   );
 }
 

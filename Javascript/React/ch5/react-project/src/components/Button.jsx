@@ -34,9 +34,19 @@ Button.defaultProps = {
     매개변수 기본값으로 설정 변경함 
 */
 const Button = ({ text, color = "black", children }) => {
+  const onClickButton = () => {
+    console.log(text);
+  };
+
   return (
-    <button style={{ color: color }}>
+    <button
+      onClick={() => {
+        console.log(text);
+      }}
+      style={{ color: color }}
+    >
       {text} - {color.toUpperCase()}
+      {children}
     </button>
   );
 };
